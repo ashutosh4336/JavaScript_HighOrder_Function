@@ -10,7 +10,7 @@ const companies = [
   { name: 'Company Nine', category: 'Retail', start: 1981, end: 2018 }
 ];
 
-const ages = [33, 12, 20, 16, 5, 18, 54, 21, 44, 61, 13, 15, 45, 25, 64, 32];
+const ages = [35, 12, 20, 16, 5, 18, 54, 21, 44, 61, 13, 15, 45, 25, 64, 32];
 
 //for Loop
 // for (let i = 0; i < companies.length; +i++) {
@@ -106,9 +106,32 @@ const sortAges = ages.sort((a, b) => a - b);
 
 //reduce
 
-let ageSum = 0;
-for (let i = 0; i < ages.length; i++) {
-  ageSum += ages[i];
-}
+// let ageSum = 0;
+// for (let i = 0; i < ages.length; i++) {
+//   ageSum += ages[i];
+// }
 
-console.log(ageSum);
+// const ageSum = ages.reduce((total, age) => {
+//   return total + age;
+// }, 0);
+
+const ageSum = ages.reduce((total, age) => total + age, 0);
+
+// console.log(ageSum);
+
+// Get company Total-Years
+
+const totalYears = companies.reduce((total, company) => {
+  return total + (company.end - company.start);
+}, 0);
+
+//console.log(totalYears);
+
+//Combine
+const combined = ages
+  .map(age => age * 2)
+  .filter(age => age >= 40)
+  .sort((a, b) => a - b)
+  .reduce((a, b) => a + b, 0);
+
+console.log(combined);
